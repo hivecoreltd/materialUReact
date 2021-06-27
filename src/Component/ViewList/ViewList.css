@@ -1,0 +1,10 @@
+.Cards{
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .Title{
+      display:inline-block;
+      padding-left: 20px;
+  }
