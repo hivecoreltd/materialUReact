@@ -7,6 +7,10 @@ import { Route, Switch } from "react-router-dom";
 import About from "../src/Pages/About";
 import Home from "../src/Pages/Home";
 import SearchBar from "../src/Component/SearchBar/SearchBar";
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import {Navbar} from "../src/Context/NavbarProvider"
+import React from "react"
 
 // import ResponsiveDrawer from "../src/Component/TestDrawer/TestDrawer"
 import ResponsiveDrawer from "../src/Component/Drawer/ResponsiveDrawer";
@@ -19,7 +23,9 @@ function App() {
     { routename: "t", icon: <MenuIcon />, path: "/hjj" },
     { routename: "three", icon: <MenuIcon />, path: "/hjj" },
   ];
-  
+
+  const [Nav, setNav] = React.useContext(Navbar)
+
   let items = [
     { name: "one", description:"abghfjhjkgvmk ygfughuh 7huytuy8huiyuuiryweuor urghweuorb burwghrwe uwghruoiweh" },
     { name: "two", description:"abghfjhjkgvmk ygfughuh 7huytuy8huiyuh" },
@@ -72,43 +78,56 @@ function App() {
     { name: "one8274", description:"abghfjhjkgvmk ygfughuh 7huytuy8huiyuh" },
     
   ];
+    console.log("NavBar", Nav);
 
-  let flag = false; //toggle drawer
+  // let flag = false; //toggle drawer
 
   return (
     <div>
       {/* <SearchBar></SearchBar> */}
+  
 
-      <NavBar></NavBar>
+        <NavBar></NavBar>
+     
+      
 
       <div className="Parent">
-        {flag && (
+        {Nav && (
           <div
             className="OneSide"
             style={{
               flex: "2",
             }}
           >
-            <ResponsiveDrawer routes={route} />
+        <Navbar.Provider value={[Nav, setNav]}>
+            {route.children}
+            <ResponsiveDrawer routes={route} />            
+        </Navbar.Provider>
+            
           </div>
         )}
         <div
           className="OtherSide"
           style={{
             paddingTop: "",
-            flex: flag ? "8" : 12,
+            flex: Nav ? "8" : 12,
           }}
         >
           <Switch>
             <Route exact path="/" component={()=><ViewList items={items} />} />
-            <Route path="/about" component={About} />  
+            <Route path="/about/:idn" component={About} />  
           </Switch>
           
        
         </div>
       </div>
 
+      {/* <Fab color="primary" aria-label="add">
+        <AddIcon />
+      </Fab> */}
+
       <Footer></Footer>
+
     </div>
   );
 }

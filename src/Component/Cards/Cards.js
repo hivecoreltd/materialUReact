@@ -28,13 +28,20 @@ export default function OutlinedCard({ item }) {
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          <h1>{item.name}</h1>
-        </Typography>
+        <div style={{
+          width: "90%"  
+        }
+
+        }>
+          <Typography
+            className={classes.title}
+            color="textSecondary"
+            gutterBottom noWrap
+          >
+            <h1>{item.title}</h1>
+          </Typography>
+        </div>
+
         {/* <Typography variant="h5" component="h2">
          lorem
         </Typography> */}
@@ -42,12 +49,12 @@ export default function OutlinedCard({ item }) {
           
         </Typography> */}
         <Typography variant="body2" component="p" noWrap>
-          {item.description}
+          {item.body}
         </Typography>
       </CardContent>
 
       <CardActions>
-        <Button component={Link} to="/about" size="small">
+        <Button component={Link} to="/about/item" size="small">
           Details
         </Button>
       </CardActions>

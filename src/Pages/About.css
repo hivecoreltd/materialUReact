@@ -1,0 +1,28 @@
+.TextForm{
+    display: inline-block;
+    padding: 30px;
+}
+
+.buttons{
+ display: inline-block;
+ margin-left: 100vh;
+}
+
+.bttn{
+    padding-right: 10px;
+}
+
+
+
+.child{
+    display: flex;
+    padding: 5px;
+    border: 1px solid black;  
+    margin: 10px;
+}
+
+.s{
+    display: inline-flex;
+    padding-left: 30px;
+    padding-right: 10px;
+}

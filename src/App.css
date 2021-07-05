@@ -16,3 +16,9 @@ display: flex;
   /* flex: 8; */
 }
 
+.bttn{
+position: relative;
+float: right;
+padding-right: 40px;
+}
+
