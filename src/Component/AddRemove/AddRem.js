@@ -1,31 +1,12 @@
 import React, { useState } from "react";
+import "./AddRem.css";
 
 function AddRem() {
+
   // const [inputList, setInputList] = useState([{ Name: "", lastName: "" }]);
   const [inputList, setInputList] = useState([{}]);
-  const [fields, setFields] = useState([{ value: null }]);
-  //{ name : "", fields : [ { fieldNmae: "" , fieldType : "" } ] }
-
-  function handleChange(i, event) {
-    const values = [...fields];
-    values[i].value = event.target.value;
-    setFields(values);
-  }
-
-  function handleAdd() {
-    const values = [...fields];
-    values.push({ value: null });
-    setFields(values);
-  }
-
-  function handleRemove(i) {
-    const values = [...fields];
-    values.splice(i, 1);
-    setFields(values);
-  }
-
-
-
+  const [fields, setFields] = useState([""]);
+  //{ name : "", fields : [ { fieldName: "" , fieldType : "" } ] }
 
 
   // handle input change
@@ -34,6 +15,7 @@ function AddRem() {
     const list = [...inputList];
     list[index][name] = value;
     setInputList(list);
+   
   };
 
   // handle click event of the Remove button
@@ -45,35 +27,30 @@ function AddRem() {
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList([...inputList, { name: "", fields: [{ fieldNmae: "", fieldType: "" }] }]);
+    setInputList([...inputList,  { fieldName: "", fieldType: "" }] );
   };
 
   return (
     <div className="App">
-
-
-      {fields.map((field, idx) => {
-        return (
-          <div key={`${field}-${idx}`}>
-            <input
-              type="text"
-              placeholder="Enter text"
-              value={field.value || ""}
-              onChange={e => handleChange(idx, e)}
-            />
-
-          </div>
-        );
-      })}
-
+      <label>Name</label>
+      <input
+        type="text"
+        placeholder="Enter text"
+        value={fields}
+        onChange={e => setFields(e.target.value)}
+      />
+      <br/>
+      <br/>
+      <br/>
+      <label>Field Require for This Catagory</label>
       {inputList.map((x, i) => {
         return (
           <div className="box">
             <input
-              className="fieldNmae"
-              name="fieldNmae"
+              className="fieldName"
+              name="fieldName"
               placeholder="Enter Last Name"
-              value={x.fieldNmae}
+              value={x.fieldName}
               onChange={e => handleInputChange(e, i)}
             />
             <input
