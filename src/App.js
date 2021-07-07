@@ -11,11 +11,16 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import {Navbar} from "../src/Context/NavbarProvider"
 import React from "react"
+// import AddItem from "./Pages/AddItem";
+import AddItem from "../src/Pages/AddItem";
+import AddRem from "../src/Component/AddRemove/AddRem"
+
 
 // import ResponsiveDrawer from "../src/Component/TestDrawer/TestDrawer"
 import ResponsiveDrawer from "../src/Component/Drawer/ResponsiveDrawer";
 import { grey } from "@material-ui/core/colors";
 import SearchAppBar from "../src/Component/NavBar/NavBar";
+
 
 function App() {
   let route = [
@@ -114,8 +119,9 @@ function App() {
           }}
         >
           <Switch>
+            <Route path="/addrem/:in?" component={()=><AddItem/>} />  
             <Route exact path="/" component={()=><ViewList items={items} />} />
-            <Route path="/about/:idn" component={About} />  
+            <Route path="/about/:in?" component={About} />  
           </Switch>
           
        
@@ -125,6 +131,8 @@ function App() {
       {/* <Fab color="primary" aria-label="add">
         <AddIcon />
       </Fab> */}
+
+      {/* <AddRem/> */}
 
       <Footer></Footer>
 

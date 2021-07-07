@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter,HashRouter } from 'react-router-dom';
 import {NavbarProvider } from "../src/Context/NavbarProvider"
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
+  // <React.StrictMode>
+    <HashRouter>
       <NavbarProvider>
       <App/>
       </NavbarProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+    </HashRouter>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 
