@@ -1,5 +1,11 @@
 import React, { useState } from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import "./AddRem.css";
+
+
+
+
 
 function AddRem() {
 
@@ -15,7 +21,7 @@ function AddRem() {
     const list = [...inputList];
     list[index][name] = value;
     setInputList(list);
-   
+
   };
 
   // handle click event of the Remove button
@@ -27,39 +33,67 @@ function AddRem() {
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList([...inputList,  { fieldName: "", fieldType: "" }] );
+    setInputList([...inputList, { fieldName: "", fieldType: "" }]);
   };
 
+
   return (
+
     <div className="App">
-      <label>Name</label>
-      <input
-        type="text"
-        placeholder="Enter text"
-        value={fields}
-        onChange={e => setFields(e.target.value)}
-      />
-      <br/>
-      <br/>
-      <br/>
+
+      <div class="flex_display">
+        <div class="name">
+        <p>Name :</p> 
+        </div>
+        <div class="texts">
+          <TextField id="standard-basic" label="Standard"
+            type="text"
+            placeholder="Enter text"
+            value={fields}
+            onChange={e => setFields(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
       <label>Field Require for This Catagory</label>
+      <br />
+      <br />
       {inputList.map((x, i) => {
         return (
-          <div className="box">
-            <input
-              className="fieldName"
-              name="fieldName"
-              placeholder="Enter Last Name"
-              value={x.fieldName}
-              onChange={e => handleInputChange(e, i)}
-            />
-            <input
-              className="fieldType"
-              name="fieldType"
-              placeholder="Enter Onno Kisu"
-              value={x.fieldType}
-              onChange={e => handleInputChange(e, i)}
-            />
+
+          <div className="box flex_display">
+            <div className="firstbox">
+              <TextField
+                id="outlined-basic"
+                label="Outlined"
+                variant="outlined"
+                className="fieldName"
+
+                name="fieldName"
+                placeholder="Enter Last Name"
+                value={x.fieldName}
+                onChange={e => handleInputChange(e, i)}
+              />
+            </div>
+
+            <div className="secondbox">
+              <TextField
+                id="outlined-basic"
+                label="Outlined"
+                variant="outlined"
+
+                className="fieldType"
+
+                name="fieldType"
+                placeholder="Enter Onno Kisu"
+                value={x.fieldType}
+                onChange={e => handleInputChange(e, i)}
+              /></div>
+
+
             <div className="btn-box">
               {inputList.length !== 1 && <button
                 className="mr10"
