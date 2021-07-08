@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import "./AddRem.css";
 import Button from '@material-ui/core/Button';
@@ -42,18 +41,28 @@ function AddRem() {
   return (
 
     <div className="App">
-
       <div class="flex_display">
         <div class="name">
           <p>Name :</p>
         </div>
         <div class="texts">
-          <TextField id="standard-basic" label="Standard"
+          <TextField id="outlined" label="Standard"
             type="text"
+            variant="outlined"
             placeholder="Enter text"
             value={fields}
             onChange={e => setFields(e.target.value)}
           />
+        </div>
+
+        <div className="butnsave">
+          <Button
+            variant="contained"
+            color="primary">
+            <SaveIcon />
+          </Button>
+
+
         </div>
       </div>
 
@@ -96,20 +105,29 @@ function AddRem() {
               /></div>
 
 
-            <div className="btn-box">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleAddClick}
-              >
-                Add Items
+            <div className="btn-box flex_display">
+              <div className="additems">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleAddClick}
+                >
+                  Add Items
+                </Button>
+                </div>
 
-              </Button>
+                <div className="additems2">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleRemoveClick(i)}
+                >
+                  Remove
+                </Button>
+                </div>
+               
 
-              <div className="butnsave">   
-               <Fab color="primary" aria-label="add">
-                <SaveIcon />
-              </Fab></div>
+          
 
 
 

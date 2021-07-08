@@ -3,9 +3,13 @@
     margin: 0;
 }
 
+.texts{
+    margin-top: 20px;
+}
+
 
 .name{
-    margin-top: 20px;
+    margin-top: 35px;
     display: inline-block;
     padding-right: 15px;
 }
@@ -27,5 +31,14 @@
 
 .butnsave{
     display: inline-block;
-    margin-left: 400px;
+    padding: 30px;
+    margin-left: 450px;
+}
+
+.additems{
+    padding:15px;
+    margin-right:10px;
+}
+.additems2{
+    padding-top:15px;
 }
