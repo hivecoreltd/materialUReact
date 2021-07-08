@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import "./AddRem.css";
-
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
+import Fab from '@material-ui/core/Fab';
 
 
 
@@ -43,7 +45,7 @@ function AddRem() {
 
       <div class="flex_display">
         <div class="name">
-        <p>Name :</p> 
+          <p>Name :</p>
         </div>
         <div class="texts">
           <TextField id="standard-basic" label="Standard"
@@ -95,10 +97,26 @@ function AddRem() {
 
 
             <div className="btn-box">
-              {inputList.length !== 1 && <button
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleAddClick}
+              >
+                Add Items
+
+              </Button>
+
+              <div className="butnsave">   
+               <Fab color="primary" aria-label="add">
+                <SaveIcon />
+              </Fab></div>
+
+
+
+              {/* {inputList.length !== 1 && <button
                 className="mr10"
                 onClick={() => handleRemoveClick(i)}>Remove</button>}
-              {inputList.length - 1 === i && <button onClick={handleAddClick}>Add</button>}
+              {inputList.length - 1 === i && <button onClick={handleAddClick}>Add</button>} */}
             </div>
           </div>
         );

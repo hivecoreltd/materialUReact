@@ -24,3 +24,8 @@
 .secondbox{
     padding:10px
 }
+
+.butnsave{
+    display: inline-block;
+    margin-left: 400px;
+}
