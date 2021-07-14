@@ -3,6 +3,12 @@
     margin: 0;
 }
 
+.App{
+    margin-left: 20px;
+}
+
+
+
 .texts{
     margin-top: 20px;
 }
@@ -32,7 +38,7 @@
 .butnsave{
     display: inline-block;
     padding: 30px;
-    margin-left: 450px;
+    margin-left: 700px;
 }
 
 .additems{

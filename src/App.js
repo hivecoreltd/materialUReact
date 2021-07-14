@@ -14,6 +14,7 @@ import React from "react"
 // import AddItem from "./Pages/AddItem";
 import AddItem from "../src/Pages/AddItem";
 import AddRem from "../src/Component/AddRemove/AddRem"
+import Display from "../src/Component/Display/Display"
 
 
 // import ResponsiveDrawer from "../src/Component/TestDrawer/TestDrawer"
@@ -120,6 +121,7 @@ function App() {
         >
           <Switch>
             <Route path="/addrem/:in?" component={()=><AddItem/>} />  
+            <Route path="/display/:in?" component={()=><Display/>} />  
             <Route exact path="/" component={()=><ViewList items={items} />} />
             <Route path="/about/:in?" component={About} />  
           </Switch>

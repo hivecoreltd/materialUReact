@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import "./AddRem.css";
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
-import Fab from '@material-ui/core/Fab';
+
 
 
 
@@ -41,12 +41,19 @@ function AddRem() {
   return (
 
     <div className="App">
-      <div class="flex_display">
+      <div class="">
         <div class="name">
-          <p>Name :</p>
+          <p>Name</p>
         </div>
-        <div class="texts">
-          <TextField id="outlined" label="Standard"
+        <div className="butnsave">
+          <Button
+            variant="contained"
+            color="primary">
+            <SaveIcon />
+          </Button>
+        </div>
+        <div class="">
+          <TextField id="outlined" label="Name"
             type="text"
             variant="outlined"
             placeholder="Enter text"
@@ -55,15 +62,7 @@ function AddRem() {
           />
         </div>
 
-        <div className="butnsave">
-          <Button
-            variant="contained"
-            color="primary">
-            <SaveIcon />
-          </Button>
 
-
-        </div>
       </div>
 
       <br />
