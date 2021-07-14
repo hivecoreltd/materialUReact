@@ -14,5 +14,25 @@
 }
 
 .container{
+ display: flex;
+}
 
+.nameBox{
+    margin-top: 10px;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.boxOne{
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.boxTwo{
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid black;
 }

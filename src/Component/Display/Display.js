@@ -41,13 +41,13 @@ function AddRem() {
   return (
 
     <div className="App">
-      <div class="container">
+      <div class="">
         <div class="name">
-          <p>Name :</p>  
+          <p>Name :</p>
         </div>
-        
-        <div class="">
-        <Box component="div" display="inline">Here The name will go</Box>
+        <br></br>
+        <div class="nameBox">
+          <Box component="div" display="inline">Here The name will go</Box>
         </div>
 
 
@@ -56,16 +56,18 @@ function AddRem() {
       <br />
       <br />
       <br />
+
       <label>Field Require for This Catagory</label>
       <br />
       <br />
       {inputList.map((x, i) => {
         return (
-          <div className="container"> 
-           <div className="box flex_display">
-            <Box component="div" display="inline">Here The name will go</Box>
+          <div className="container">
+            <div className="boxOne">
+              <Box component="div" display="inline">Here The name will go</Box>
+            </div>
 
-            <div className="">
+            <div className="boxTwo">
               <Box component="div" display="inline">Here The name will go</Box>
 
 
@@ -75,7 +77,7 @@ function AddRem() {
               {inputList.length - 1 === i && <button onClick={handleAddClick}>Add</button>} */}
 
             </div>
-          </div>
+
           </div>
 
         );
