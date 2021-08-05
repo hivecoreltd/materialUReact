@@ -11,7 +11,7 @@ export default function ResponsiveDrawer({routes}) {
       
       <List>
         {routes.map((item, index) => (
-          <ListItem button key={index}>
+          <ListItem button key={index} onClick={()=>item.onclickf()}>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.routename} />
           </ListItem>

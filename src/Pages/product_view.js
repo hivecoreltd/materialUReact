@@ -1,50 +1,52 @@
 import React, { useState, useEffect } from "react";
-import OutlinedCard from "../Cards/Cards";
+import OutlinedCard from "../Component/Cards/Cards";
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
 import "./ViewList.css";
 import SearchIcon from "@material-ui/icons/Search";
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import { getRepo } from "../../Services/Servis"
-import { ViewlistContext } from "../../Context/viwelistContext";
+import { getCategories, getProducts } from "../Services/Servis"
+import { ViewlistContext } from "../Context/viwelistContext";
+import {
+  useHistory,
+  useParams
+} from "react-router-dom";
 
-export default function ViewList({ items }) {
+export default function Product_view({ items }) {
+  let history = useHistory();
 
   const [viewlist, setViewList] = React.useContext(ViewlistContext)
   const [searchValue, setsearchValue] = useState("")
   const [views, setviews] = useState(viewlist)
 
-  //api fetch axios
 
-  // useEffect(async () => {
-  //   let res = await getRepo();
-
-  //   if (res.length) setviews(res)
-  //   return "abc"
-
-
-  // },
-  //   [])
 
 
   useEffect(() => {
+    
     // console.log("hello", searchValue);
     if (viewlist.length) {
-      let tviews = viewlist.filter(x => x.title.includes(searchValue))
+      let tviews = viewlist.filter(x => x.name.includes(searchValue))
       setviews(tviews)
     }
 
   }, [searchValue])
 
 
+  useEffect(async () => {
+    let res = await getProducts();
+    if (res.data.length) { setViewList(res.data); setviews(res.data) }
+
+  }, [])
+
+
   const handelAddbutton = async () => {
-    
+    console.log("buhi nah");
+    history.push('/product/add')
   }
 
-  // useEffect(() => {
 
-  // }, [])
   return (
     <div>
       <div
@@ -76,7 +78,7 @@ export default function ViewList({ items }) {
           {views.map((item1, index) => {
             return (
               <Grid item key={index}>
-                <OutlinedCard item={item1}></OutlinedCard>
+                <OutlinedCard item={item1} actionpath={`/product/detail/${item1._id}`}></OutlinedCard>
               </Grid>
             );
           })}

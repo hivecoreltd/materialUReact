@@ -5,13 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter,HashRouter } from 'react-router-dom';
 import {NavbarProvider } from "../src/Context/NavbarProvider"
+import {TitelProvider } from "../src/Context/titelContext"
+import {ViwelistProvider } from "../src/Context/viwelistContext"
 
 
 ReactDOM.render(
   // <React.StrictMode>
     <HashRouter>
       <NavbarProvider>
+      <TitelProvider> 
+      <ViwelistProvider> 
       <App/>
+      </ViwelistProvider>
+      </TitelProvider>
       </NavbarProvider>
     </HashRouter>,
   // </React.StrictMode>,

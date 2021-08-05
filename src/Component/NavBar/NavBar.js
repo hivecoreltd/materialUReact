@@ -8,6 +8,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import {Navbar} from "../../Context/NavbarProvider"
+import {TitelContext} from "../../Context/titelContext"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchAppBar() {
 
   const [Nav, setNav] = React.useContext(Navbar)
+  const [titel, setTitel] = React.useContext(TitelContext)
   const classes = useStyles();
   
   const handlenavigationDrawer = () => {
@@ -90,12 +92,13 @@ export default function SearchAppBar() {
           >
             <MenuIcon />
           </IconButton> */}
-          <button onClick={()=> handlenavigationDrawer()} >
+          <div onClick={()=> handlenavigationDrawer()} >
           <MenuIcon />
-          </button>
-           
+          <br/>
+          </div>
+           <br/>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            {titel}
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

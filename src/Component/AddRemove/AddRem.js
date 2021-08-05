@@ -3,17 +3,67 @@ import TextField from '@material-ui/core/TextField';
 import "./AddRem.css";
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import { addcategory } from "../../Services/Servis";
+import {
+  useHistory,
+  useParams
+} from "react-router-dom";
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
 
+    minWidth: 150,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 function AddRem() {
+  let history = useHistory();
+
+  const classes = useStyles();
 
   // const [inputList, setInputList] = useState([{ Name: "", lastName: "" }]);
   const [inputList, setInputList] = useState([{}]);
-  const [fields, setFields] = useState([""]);
+  const [fields, setFields] = useState("");
   //{ name : "", fields : [ { fieldName: "" , fieldType : "" } ] }
+  const checkarr = () => {
+    let rr = []
+    if (inputList.length) {
+      rr = inputList.filter(x => x.fieldName !== '' && x.fieldType !== "")
+
+    }
+    if (rr.length) return rr
+    else return rr
+  }
+  const handel_save = async () => {
+    if (!fields) return
+    let check = await checkarr()
+    if (!check.length) return
+    let body = {
+      name: fields,
+      properties: check
+    }
+    let res = await addcategory(body)
+    if (res.isExecuted)
+      history.push('/category')
+    else console.log('something went wrong ', res)
+  }
+  const handel_cancle = async () => {
+    setFields("");
+    let list = [{ fieldName: "", fieldType: "" }]
+    setInputList(list)
+  }
 
 
   // handle input change
@@ -42,18 +92,30 @@ function AddRem() {
 
     <div className="App">
       <div class="">
-        <div class="name">
-          <p>Name</p>
-        </div>
+
         <div className="butnsave">
-          <Button
+          <Button style={{ marginRight: '4px' }}
             variant="contained"
+            onClick={() => handel_save()}
             color="primary">
             <SaveIcon />
           </Button>
+
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => handel_cancle()}>
+            <CancelIcon />
+          </Button>
         </div>
+        <div class="name">
+          <p>Category name</p>
+        </div>
+        <br />
+        <br />
         <div class="">
-          <TextField id="outlined" label="Name"
+
+          <TextField id="outlined" label="Category name"
             type="text"
             variant="outlined"
             placeholder="Enter text"
@@ -67,7 +129,6 @@ function AddRem() {
 
       <br />
       <br />
-      <br />
       <label>Field Require for This Catagory</label>
       <br />
       <br />
@@ -78,7 +139,7 @@ function AddRem() {
             <div className="firstbox">
               <TextField
                 id="outlined-basic"
-                label="Outlined"
+                label="property name"
                 variant="outlined"
                 className="fieldName"
 
@@ -90,18 +151,23 @@ function AddRem() {
             </div>
 
             <div className="secondbox">
-              <TextField
-                id="outlined-basic"
-                label="Outlined"
-                variant="outlined"
-
-                className="fieldType"
-
-                name="fieldType"
-                placeholder="Enter Onno Kisu"
-                value={x.fieldType}
-                onChange={e => handleInputChange(e, i)}
-              /></div>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel id="demo-simple-select-outlined-label">property type</InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  name="fieldType"
+                  value={x.fieldType}
+                  onChange={e => handleInputChange(e, i)}
+                  label="property type"
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={"Text"}>Text</MenuItem>
+                  <MenuItem value={"Number"}>Number</MenuItem>
+                </Select>
+              </FormControl></div>
 
 
             <div className="btn-box flex_display">
@@ -113,9 +179,9 @@ function AddRem() {
                 >
                   Add Items
                 </Button>
-                </div>
+              </div>
 
-                <div className="additems2">
+              <div className="additems2">
                 <Button
                   variant="contained"
                   color="primary"
@@ -123,22 +189,12 @@ function AddRem() {
                 >
                   Remove
                 </Button>
-                </div>
-               
-
-          
-
-
-
-              {/* {inputList.length !== 1 && <button
-                className="mr10"
-                onClick={() => handleRemoveClick(i)}>Remove</button>}
-              {inputList.length - 1 === i && <button onClick={handleAddClick}>Add</button>} */}
+              </div>
             </div>
           </div>
         );
       })}
-      <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
+
     </div>
   );
 }

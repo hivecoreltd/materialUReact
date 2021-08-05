@@ -21,6 +21,7 @@
 }
 .flex_display{
     display: flex;
+    overflow-x: auto;
 }
 
 .fieldName{
@@ -32,11 +33,13 @@
 }
 
 .secondbox{
-    padding:10px
+    padding:10px;
+    
 }
 
 .butnsave{
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
     padding: 30px;
     margin-left: 700px;
 }

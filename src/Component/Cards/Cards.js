@@ -22,14 +22,14 @@ const useStyles = makeStyles({
   },
 });
 
-export default function OutlinedCard({ item }) {
+export default function OutlinedCard({ item, actionpath }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <div style={{
-          width: "90%"  
+          width: "90%"
         }
 
         }>
@@ -38,7 +38,7 @@ export default function OutlinedCard({ item }) {
             color="textSecondary"
             gutterBottom noWrap
           >
-            <h1>{item.title}</h1>
+            <h1>{item.name}</h1>
           </Typography>
         </div>
 
@@ -49,12 +49,18 @@ export default function OutlinedCard({ item }) {
           
         </Typography> */}
         <Typography variant="body2" component="p" noWrap>
-          {item.body}
+          {item.brand ? `Brand: ${item.brand}` : ''}
+        </Typography>
+        <Typography variant="body2" component="p" noWrap>
+          {item.category ? `Category: ${item.category}` : ''}
+        </Typography>
+        <Typography variant="body2" component="p" noWrap>
+          {item.qty ? `Quantity: ${item.qty}` : ''}
         </Typography>
       </CardContent>
 
       <CardActions>
-        <Button component={Link} to="/about/item" size="small">
+        <Button component={Link} to={actionpath} size="small">
           Details
         </Button>
       </CardActions>
